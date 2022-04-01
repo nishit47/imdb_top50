@@ -18,7 +18,7 @@ with open('imdb.csv', 'w', encoding='utf8', newline='') as f:
     
     for list in lists:
         title=list.h3.a.text
-        year=list.h3.find('span', class_="lister-item-year").text
+        year=list.h3.find('span', class_="lister-item-year").text.replace("(", "").replace(")","")
         genre=list.p.find('span', class_="genre").text.replace("\n", "")
         ratingbar=list.find('div', class_="ratings-bar")
         ratingimdb=ratingbar.find('div', class_="ratings-imdb-rating")
@@ -26,7 +26,6 @@ with open('imdb.csv', 'w', encoding='utf8', newline='') as f:
         rank=list.h3.find('span', class_="lister-item-index").text
         data=[rank, title, year, genre, rating]
         thewriter.writerow(data)
-
 
 df=pd.read_csv("imdb.csv")
 
