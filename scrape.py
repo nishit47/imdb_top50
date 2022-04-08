@@ -30,4 +30,4 @@ with open('imdb.csv', 'w', encoding='utf8', newline='') as f:
 df=pd.read_csv("imdb.csv")
 
 profile=ProfileReport(df)
-profile.to_file(output_file="Report.html")
+profile.to_file(output_file="imdbReport.html")
